@@ -525,10 +525,20 @@ button:disabled {
 }
 
 .repo-identity {
-  min-width: 205px;
+  flex: 1 1 0;
+  min-width: 0;
   display: flex;
   align-items: center;
   gap: 13px;
+}
+
+.repo-identity > div:last-child {
+  min-width: 0;
+}
+
+.repo-identity h2,
+.repo-summary {
+  overflow-wrap: anywhere;
 }
 
 .repo-monogram {
@@ -583,10 +593,12 @@ button:disabled {
 }
 
 .repo-stats {
-  flex: 1;
+  flex: 0 0 auto;
+  width: min(100%, 470px);
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(4, auto);
+  justify-content: space-between;
+  gap: 12px 22px;
 }
 
 .stat {
@@ -598,6 +610,7 @@ button:disabled {
 .stat > span {
   color: var(--muted);
   font-size: 8px;
+  white-space: nowrap;
 }
 
 .stat strong {
@@ -1440,6 +1453,8 @@ button:disabled {
 
   .repo-stats {
     width: 100%;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    justify-content: stretch;
   }
 
   .edition-stamp {
@@ -1607,6 +1622,10 @@ button:disabled {
   .repo-stats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 18px 12px;
+  }
+
+  .repo-identity {
+    align-items: flex-start;
   }
 
   .workspace-heading {
