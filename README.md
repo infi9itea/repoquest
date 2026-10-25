@@ -63,3 +63,6 @@ Keep API tokens and credentials out of source control. Configure credentials in 
 ## Project Status
 
 Working prototype. Quest quality and source-file relevance depend on the evidence available for each repository.
+
+**Development note:** AI coding tools were used to assist with parts of development, including debugging and implementation. I reviewed and tested the resulting code and take responsibility for the project's functionality.
+
