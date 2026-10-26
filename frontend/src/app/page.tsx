@@ -284,6 +284,7 @@ export default function Home() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [isHydrated, setIsHydrated] = useState(false);
 
+/* eslint-disable react-hooks/set-state-in-effect -- reads localStorage after hydration */
   useEffect(() => {
     try {
       const storedProgress = localStorage.getItem(PROGRESS_KEY);
@@ -313,6 +314,7 @@ export default function Home() {
       setNotice("Browser storage is unavailable. Progress may not persist.");
     }
   }, [isHydrated, progress, savedRuns]);
+/* eslint-enable react-hooks/set-state-in-effect */
 
   const filteredQuests = useMemo(() => {
     return questData.filter(
