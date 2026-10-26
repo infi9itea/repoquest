@@ -72,8 +72,8 @@ Questions or bugs: open an [issue](https://github.com/infi9itea/repoquest/issues
 ## Built on the GitHub API
 
    <picture>
-     <source media="(prefers-color-scheme: dark)" srcset="docs/Github-invertocat-white.svg">
-     <img src="docs/Github-invertocat-black.svg" alt="GitHub" height="20">
+     <source media="(prefers-color-scheme: dark)" srcset="docs/GitHub_Invertocat_White.svg">
+     <img src="docs/github_Invertocat_Black.svg" alt="GitHub" height="20">
    </picture>
 
    RepoQuest uses the GitHub REST API for repository metadata, issues, and file trees. It is an independent project and is not endorsed by GitHub.
