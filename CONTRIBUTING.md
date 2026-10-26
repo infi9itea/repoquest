@@ -4,16 +4,17 @@ Thanks for your interest in RepoQuest! Bug reports, ideas, docs fixes, and code 
 
 ## Ways to help
 
-- **Report a bug** – open an issue with the repo URL you tried, what you expected, and what happened (a screenshot helps).
-- **Suggest an improvement** – open an issue describing the problem first, then the idea.
-- **Pick up an issue** – look for [`good first issue`](../../labels/good%20first%20issue) or [`help wanted`](../../labels/help%20wanted). Comment on the issue so nobody duplicates work.
+- **Report a bug**: open an issue with the repo URL you tried, what you expected, and what happened (a screenshot helps).
+- **Suggest an improvement**: open an issue describing the problem first, then the idea.
+- **Pick up an issue**: look for [`good first issue`](https://github.com/infi9itea/repoquest/labels/good%20first%20issue) or [`help wanted`](https://github.com/infi9itea/repoquest/labels/help%20wanted). Comment on the issue so nobody duplicates work.
 
 ## Project layout
 
 | Path | What it is |
 | --- | --- |
-| `frontend/` | Next.js + React + TypeScript app (UI and the `/api/generate` route) |
-| `workflows/` | n8n workflow export that fetches GitHub evidence and calls Gemini |
+| `frontend/` | The Next.js + React + TypeScript app. |
+| `frontend/src/app/api/generate/route.ts` | The whole pipeline: URL validation, GitHub evidence, Gemini call, and response validation. |
+| `frontend/src/app/page.tsx` | The UI. |
 
 ## Local setup
 
@@ -22,11 +23,11 @@ Thanks for your interest in RepoQuest! Bug reports, ideas, docs fixes, and code 
 
    ```bash
    cd frontend
-   npm install
-   echo "N8N_WEBHOOK_URL=http://127.0.0.1:5678/webhook/repoquest" > .env.local
+   npm ci
+   cp .env.example .env.local
    ```
 
-3. Start n8n, import the workflow from `workflows/`, and add your GitHub and Gemini credentials inside n8n.
+3. Put your `GEMINI_API_KEY` in `.env.local`. A `GITHUB_TOKEN` with no extra permissions is optional but avoids GitHub rate limits.
 4. Run the app:
 
    ```bash
@@ -35,7 +36,7 @@ Thanks for your interest in RepoQuest! Bug reports, ideas, docs fixes, and code 
 
 5. Open http://localhost:3000.
 
-UI-only changes (layout, CSS, components) don't need real credentials if you work against saved sample data, but generating a questline does.
+Generating a questline needs a Gemini key. UI-only changes (layout, CSS, components) can be checked against the sample questline shown on first load.
 
 ## Making a change
 
@@ -55,8 +56,8 @@ UI-only changes (layout, CSS, components) don't need real credentials if you wor
 ## Guidelines
 
 - Follow the existing code style; the ESLint config is the source of truth.
-- Never commit secrets: API keys, n8n credentials, or `.env*` files.
-- If you change the n8n workflow, re-export it to `workflows/` and remove any credential values from the JSON.
+- Never commit secrets: API keys, tokens, or `.env*` files (only `.env.example` is tracked).
+- Treat issue text and model output as untrusted. Keep the validation in `route.ts` strict.
 - Be kind and constructive in issues and reviews.
 
 ## Questions
